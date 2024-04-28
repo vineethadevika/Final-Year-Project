@@ -1,0 +1,113 @@
+{% extends "staffhome.html" %}
+{% block content %}
+
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+
+    .chat-card {
+        max-width: 300px;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 10px;
+    }
+
+    .sender {
+        text-align: right;
+        color: #1E90FF;
+        /* Blue color for sender */
+    }
+
+    .receiver {
+        text-align: left;
+        color: #32CD32;
+        /* Green color for receiver */
+    }
+
+    .message {
+        margin: 0;
+    }
+</style>
+<img src="/static/backgroundone.jpg" class="card-img" alt="..." style="height:28rem;">
+<div class="card-img-overlay">
+    <center style="margin-top:0rem;">
+
+        <div class="card" style="width: 60rem;">
+            <h5 style="color: black;">Staff Announcement Page</h5>
+            <hr>
+            <div class="card-body" style="overflow: scroll;height:15rem">
+                {% for message in all_messages %}
+                <div class="container mt-3">
+                    {% if message.senderemail == 'admin@gmail.com' %}
+                    <div class="row justify-content-start">
+                        <div class="col-6">
+                            <div class="card text-white bg-primary">
+                                <div class="card-body overflow-auto">
+                                    <p class="card-text">{{ message.senderemail }} : {{ message.announcement }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="row justify-content-end">
+                        <div class="col-6">
+                            <div class="card text-dark bg-light">
+                                <div class="card-body overflow-auto">
+                                    <p class="card-text">{{ message.announcement }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+
+
+
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                {% endfor %}
+        </ul>
+        {% endif %}
+        <form class="form-control w-50" action="{% url 'staffannouncement' %}" method="post">
+            {% csrf_token %}
+            <div class="row g-2 align-items-center">
+                <div class="form-group">
+                    {{ form.staffannouncement.label_tag }}
+                    {{ form.staffannouncement }}
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary mb-3" style="margin-left: 15rem;">Submit
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </center>
+</div>
+
+
+
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends "adminhome.html" %}
+{% block content %}
+<style>
+    /* Container surrounding the form */
+    .container-surrounding {
+        background-image: url("/static/backgroundone.jpg"); /* Add the background image */
+        background-size: cover; /* Make sure the background image covers the entire container */
+        min-height: 100vh; /* Ensure the container takes up the full viewport height */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px; /* Reduced padding */
+    }
+
+    /* Form container */
+    .form-container {
+        padding: 20px; /* Adjusted padding */
+        background-color: #ffffff; /* White background */
+        border-radius: 15px; /* Reduced border radius */
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Reduced box shadow */
+        width: 90%; /* Increase width */
+        max-width: 500px; /* Reduced maximum width */
+        color: #333;
+    }
+
+    /* Form input fields */
+    .form-group {
+        margin-bottom: 15px; /* Reduced margin */
+    }
+    label {
+        font-weight: bold;
+        color: #333; /* Dark text color */
+        font-size: 16px; /* Reduced font size */
+    }
+    input[type="text"],
+    select {
+        width: 100%;
+        padding: 10px 15px; /* Reduced padding */
+        margin: 6px 0; /* Reduced margin */
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 8px; /* Reduced border radius */
+        box-sizing: border-box;
+        background-color: #f8f9fa; /* Light gray background */
+        font-size: 14px; /* Reduced font size */
+    }
+
+    /* Submit button */
+    button[type="submit"] {
+        background-color: #976bff; /* Light red background */
+        color: white;
+        padding: 12px 18px; /* Reduced padding */
+        border: none;
+        border-radius: 8px; /* Reduced border radius */
+        cursor: pointer;
+        width: 100%;
+        font-size: 16px; /* Reduced font size */
+        font-weight: bold;
+        transition: background-color 0.3s ease; /* Smooth transition */
+    }
+    button[type="submit"]:hover {
+        background-color: #ff4d4d; /* Darker red on hover */
+    }
+</style>
+
+<div class="container-surrounding">
+    <!-- Form container -->
+    <div class="form-container">
+        <h4 class="text-center mb-3" style="color:#6b7aff">Add Time Table</h4> <!-- Reduced margin -->
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

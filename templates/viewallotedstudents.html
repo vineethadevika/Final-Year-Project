@@ -1,0 +1,88 @@
+{% extends 'adminhome.html' %}
+{% block content %}
+
+<style>
+    /* Style for the table */
+    table {
+        font-family: Arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        border-radius: 8px;
+        overflow: hidden;
+        background-color: #f0f8ff; /* Sky blue background */
+        color: #333; /* Text color */
+    }
+
+    /* Style for table header */
+    th {
+        background-color: #FF69B4; /* Pink background for header */
+        color: white;
+        font-weight: bold;
+        padding: 12px;
+        text-align: left;
+    }
+
+    /* Style for table data */
+    td {
+        border: 1px solid #FFA07A; /* Lighter shade of pink for borders */
+        padding: 10px;
+        text-align: left;
+    }
+
+    /* Style for alternate rows */
+    tr:nth-child(even) {
+        background-color: #90EE90; /* Light green background for even rows */
+    }
+
+    /* Style for hover effect */
+    tr:hover {
+        background-color: #FFD700; /* Yellow background on hover */
+    }
+
+    /* Hide anchor tags for PDF */
+    
+</style>
+
+<table>
+    <tr>
+        <th>S.No</th>
+        <th>Branch</th>
+        <th>Room No</th>
+        <th>Bench No</th>
+        <th>Seat Number</th>
+        <!-- <th>Student Email</th> -->
+        <th>Student ID</th>
+        <th>Date</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+    </tr>
+    {% for student in Exam_alloted_student %}
+        {% if student.Student_Email != 'pending' %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ student.department }}</td>
+                <td>{{ student.RoomNo }}</td>
+                <td>{{ student.BenchNo }}</td>
+                <td>{{ student.SeatNumber }}</td>
+                <!-- <td>{{ student.Student_Email }}</td> -->
+                <td>{{ student.Student_Id }}</td>
+                <td>{{ student.date }}</td>
+                <td>{{ student.starttime }}</td>
+                <td>{{ student.endtime }}</td>
+            </tr>
+        {% endif %}
+    {% endfor %}
+</table>
+
+<div id="buttons-container" style="display: flex; justify-content: space-around; background-color: #87CEEB; padding: 10px;">
+    <a id="excel-download-btn" href="{% url 'download_details' %}" style="background-color: #4CAF50; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; transition-duration: 0.4s; cursor: pointer; border-radius: 8px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);">
+        Download Details In Excel Format
+    </a>
+    <a id="pdf-download-btn" href="{% url 'generate_pdf' %}" style="background-color: #f44336; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; transition-duration: 0.4s; cursor: pointer; border-radius: 8px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);">Download Department Wise Report</a>
+
+    <a href="{% url 'download_room_report' %}" style="background-color: #008CBA; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; transition-duration: 0.4s; cursor: pointer; border-radius: 8px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);">Download Room Wise Report</a>
+
+</div>
+
+
+{% endblock %}

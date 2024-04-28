@@ -1,0 +1,87 @@
+{% extends "studenthome.html" %}
+{% block content %}
+<style>
+    /* Style for the student cards */
+    .student-card {
+        margin: 20px; /* Add some margin around the card */
+        border-radius: 15px; /* Rounded corners */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow */
+        overflow: hidden; /* Hide any overflow content */
+    }
+
+    /* Style for the student card image container */
+    .student-card-img-container {
+        height: 200px; /* Fixed height for the image container */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Style for the student card image */
+    .student-card-img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: cover;
+    }
+
+    /* Style for the student card body */
+    .student-card-body {
+        padding: 20px;
+    }
+
+    /* Style for the student card title */
+    .student-card-title {
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    /* Style for the student card details */
+    .student-card-details {
+        font-size: 14px;
+        color: #555;
+        margin-bottom: 5px;
+    }
+
+    /* Style for the reset password button */
+    .reset-password-btn {
+        background-color: #28a745; /* Green background */
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 8px 16px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    .reset-password-btn:hover {
+        background-color: #218838; /* Darker green on hover */
+    }
+</style>
+
+<div class="card-img-overlay">
+    <div class="row justify-content-center">
+        {% for student in student_profile %}
+        <div class="col-md-4">
+            <div class="student-card">
+                <div class="student-card-img-container">
+                    <img src="{{ student.profile_url }}" alt="Profile Photo" style="max-width: 200px; max-height: 200px;">
+
+                </div>
+                <div class="student-card-body">
+                    <h6 class="student-card-title">{{ student.name }}</h6>
+                    <p class="student-card-details">Email: {{ student.email }}</p>
+                    <p class="student-card-details">Roll Number: {{ student.rollnumber }}</p>
+                    <p class="student-card-details">Branch: {{ student.department }}</p>
+                    <p class="student-card-details">Semester: {{ student.semester }}</p>
+                    <p class="student-card-details">Year: {{ student.year }}</p>
+                    <p class="student-card-details">Contact: {{ student.contact }}</p>
+                    <center><a href="{% url 'resetstudentpassword' %}" class="btn btn-success reset-password-btn">Reset Password</a></center>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

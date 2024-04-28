@@ -1,0 +1,88 @@
+{% extends "adminhome.html" %}
+{% block content %}
+<style>
+    /* Style for the faculty cards */
+    .faculty-card {
+        background-color: #f8f9fa; /* Light gray background */
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px; /* Add some space between cards */
+    }
+
+    /* Style for the faculty card image container */
+    .faculty-card-img-container {
+        height: 200px; /* Fixed height for the image container */
+        overflow: hidden; /* Hide any overflow */
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Style for the faculty card image */
+    .faculty-card-img {
+        width: 60%; /* Make the image fill the container width */
+        height: auto; /* Maintain aspect ratio */
+        
+    }
+
+    /* Style for the faculty card body */
+    .faculty-card-body {
+        padding: 20px;
+    }
+
+    /* Style for the faculty card title */
+    .faculty-card-title {
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    /* Style for the faculty card details */
+    .faculty-card-details {
+        font-size: 14px;
+        color: #555;
+        margin-bottom: 5px;
+    }
+
+    /* Style for the delete button */
+    .delete-btn {
+        background-color: #dc3545; /* Red background */
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 8px 16px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    .delete-btn:hover {
+        background-color: #c82333; /* Darker red on hover */
+    }
+</style>
+
+<div class="card-img-overlay">
+    <div class="row justify-content-center">
+        {% for i in all_faculties %}
+        <div class="col-md-3">
+            <div class="faculty-card">
+                <div class="faculty-card-img-container">
+                    <img src="/static/faculty/{{i.profilename}}" class="faculty-card-img" alt="Faculty Image">
+                </div>
+                <div class="faculty-card-body">
+                    <h6 class="faculty-card-title">{{ i.name }}</h6>
+                    <p class="faculty-card-details">Email: {{ i.email }}</p>
+                    <p class="faculty-card-details">Contact: {{i.contact}}</p>
+                    <p class="faculty-card-details">Branch: {{ i.branch }}</p>
+                    <p class="faculty-card-details">Semester: {{i.semester}}</p>
+                    <p class="faculty-card-details">Year: {{i.year}}</p>
+                    <center><a href="{% url 'deletefaculty' i.id %}" class="btn btn-danger">Delete</a></center>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
