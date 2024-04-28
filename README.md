@@ -1,4 +1,4 @@
-                                                                        B.Tech Final Year Project
+                                                        B.Tech Final Year Project
 Project Title : NEXT GENERATION APPROACH FOR EXAM HALL DISTRIBUTION THROUGH UNIQUE AND ANAMOLUS SEMANTIC TECHNIQUES
 Problem Statement : The traditional manual exam seating arrangement process is prone to errors, time-consuming and lacks of efficiency. Challenges such as data inaccuracies,cumbersome seat allocation and manual communication pose significant hurdles.
 To address these issues the "Next Generation Approach For Enhancing Exam Hall Distribution Through Unique And Anomalous Semantic Techniques" is proposed.
