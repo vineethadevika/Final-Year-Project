@@ -21,7 +21,7 @@ def generate_examallotment_pdf(request):
     elements = []
 
     # Iterate through examallotments and group by department
-    departments = set(examallotment.department for examallotment in examallotments)
+    departments = sorted(set(examallotment.department for examallotment in examallotments))
     for department in departments:
         # Add page break for each department after the first one
         if elements:
