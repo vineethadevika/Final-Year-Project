@@ -5,9 +5,9 @@ To address these issues the "Next Generation Approach For Enhancing Exam Hall Di
 Technology Used : Python with Django Framework.
 
 Downloadable Reports:
-Excel Report : A complete seat allotment report is generated in Excel format for download.
-Department Wise PDF Report : This report provides department-wise seat allotment information in PDF format.
-Room Wise PDF Report : This report offers room-wise seat allotment details in PDF format.
+1.Excel Report : A complete seat allotment report is generated in Excel format for download.
+2.Department Wise PDF Report : This report provides department-wise seat allotment information in PDF format.
+3.Room Wise PDF Report : This report offers room-wise seat allotment details in PDF format.
 
 
 
